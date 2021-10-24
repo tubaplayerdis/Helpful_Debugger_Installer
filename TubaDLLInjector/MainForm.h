@@ -118,6 +118,7 @@ namespace Helpful_Debugger_Installer {
 			this->textBox1->ReadOnly = true;
 			this->textBox1->Size = System::Drawing::Size(314, 20);
 			this->textBox1->TabIndex = 2;
+			this->textBox1->Text = L"C:\\Program Files\\Helpful_Debugger";
 			// 
 			// label2
 			// 
@@ -155,6 +156,7 @@ namespace Helpful_Debugger_Installer {
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm";
 			this->Text = L"HDI - Main";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -164,11 +166,11 @@ namespace Helpful_Debugger_Installer {
 			private:  
 				
 			System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-				
-				AYO lol;
-				lol.SetInstallString("PEEPEE");
-				String^ str2 = gcnew String(lol.ReturnInstallString().c_str());
-				textBox1->Text = str2;
+				AYO NEED;
+				if (NEED.ReturnInstallString() == "")
+				{
+					NEED.ShowBox("There is no install directory");
+				}
 			}
 									 
 
@@ -191,8 +193,13 @@ namespace Helpful_Debugger_Installer {
 					lel.SetInstallString(idk);
 					String^ str2 = gcnew String(lel.ReturnInstallString().c_str());
 					textBox1->Text = str2;
+					lel.ShowBox(lel.ReturnInstallString());
 				}
 
 			}
-};
+			System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+				AYO p;				
+				p.SetInstallString("C:\\Program Files\\Helpful_Debugger");
+			}
+	};
 }

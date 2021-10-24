@@ -18,6 +18,29 @@ using namespace std::filesystem;
 
 string installationstring;
 
+//prive personal
+
+bool CheckIfDicrectoryExistsP(std::string value) {
+	if (is_directory(value))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
+void IGIVEUP(std::string value) {
+	String^ str2 = gcnew String(value.c_str());
+	System::Windows::Forms::MessageBox::Show(str2);
+}
+
+string ReturnInstallStringP() {
+	string idk = installationstring;
+	return idk;
+}
 		
 		
 void AYO::SetInstallString(std::string value) {
@@ -35,7 +58,7 @@ string AYO::ReturnInstallString() {
 
 void AYO::ShowBox(std::string value) {
 	String^ str2 = gcnew String(value.c_str());
-	System::Windows::Forms::MessageBox().Show(str2);
+	System::Windows::Forms::MessageBox::Show(str2);
 }
 
 /*
@@ -44,7 +67,7 @@ void AYO::ShowBox(std::string value) {
 * 1 = direcotry aleady existed
 */
 int AYO::CreateorVerifyInstallDic(std::string direcotry) {
-	if (!CheckIfDicrectoryExists(direcotry))
+	if (!CheckIfDicrectoryExistsP(direcotry))
 	{
 		filesystem::create_directory(direcotry);
 		return 0;
@@ -64,8 +87,8 @@ int AYO::CreateorVerifyInstallDic(std::string direcotry) {
 * 3 = could not install file
 */
 int AYO::InstallHelpfuldebugger(std::string downloadpath) {
-	if (!CheckIfDicrectoryExists(ReturnInstallStringP())) {
-		ShowBoxP("The Directory you specified did not exist");
+	if (!CheckIfDicrectoryExistsP(installationstring)) {
+		IGIVEUP("The Directory you specified did not exist");
 		return 1;
 	}
 	try
@@ -81,36 +104,14 @@ int AYO::InstallHelpfuldebugger(std::string downloadpath) {
 	}
 	try
 	{								
-		URLDownloadToFileA(NULL, downloadpath.c_str(), ReturnInstallStringP().c_str(), 0, NULL);
+		URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), 0, NULL);
 	}
 	catch (const std::exception&)
 	{
 		return 3;
 	}
 }
-//prive personal
 
-bool CheckIfDicrectoryExists(std::string value) {
-	if (is_directory(value))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-
-}
-
-void ShowBoxP(std::string value) {
-	String^ str2 = gcnew String(value.c_str());
-	System::Windows::Forms::MessageBox().Show(str2);
-}
-
-string ReturnInstallStringP() {
-	string idk = installationstring;
-	return idk;
-}
 
 
 
