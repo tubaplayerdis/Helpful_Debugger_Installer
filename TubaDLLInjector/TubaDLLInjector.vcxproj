@@ -79,6 +79,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -124,18 +128,20 @@
   <ItemGroup>
     <ClCompile Include="EditorForm.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="ISM.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EditorForm.h">
+    <ClInclude Include="FinishedScreen.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ISM.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EditorForm.resx">
-      <DependentUpon>EditorForm.h</DependentUpon>
+    <EmbeddedResource Include="FinishedScreen.resx">
+      <DependentUpon>FinishedScreen.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

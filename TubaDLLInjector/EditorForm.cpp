@@ -1,4 +1,4 @@
-#include "EditorForm.h"
+#include "FinishedScreen.h"
 
 public class EditorFormCPP
 {
