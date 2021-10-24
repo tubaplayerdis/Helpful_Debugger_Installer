@@ -31,19 +31,9 @@ string AYO::ReturnInstallString() {
 	return idk;
 }
 
-bool CheckIfDicrectoryExists(std::string value) {
-	if (is_directory(value))
-	{
-		return true; 
-	}
-	else
-	{
-		return false;
-	}
-			
-}
 
-void ShowBox(std::string value) {
+
+void AYO::ShowBox(std::string value) {
 	String^ str2 = gcnew String(value.c_str());
 	System::Windows::Forms::MessageBox().Show(str2);
 }
@@ -53,7 +43,7 @@ void ShowBox(std::string value) {
 		* 0 = created directory
 		* 1 = direcotry aleady existed
 		*/
-		int CreateorVerifyInstallDic(string direcotry) {
+		int CreateorVerifyInstallDic(std::string direcotry) {
 			if (!CheckIfDicrectoryExists(direcotry))
 			{
 				filesystem::create_directory(direcotry);
@@ -74,8 +64,8 @@ void ShowBox(std::string value) {
 		* 3 = could not install file
 		*/
 		int InstallHelpfuldebugger(std::string downloadpath) {
-			if (!CheckIfDicrectoryExists(installationstring)) {
-				ShowBox("The Directory you specified did not exist");
+			if (!CheckIfDicrectoryExists(ReturnInstallStringP())) {
+				ShowBoxP("The Directory you specified did not exist");
 				return 1;
 			}
 			try
@@ -91,12 +81,35 @@ void ShowBox(std::string value) {
 			}
 			try
 			{								
-				URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), 0, NULL);
+				URLDownloadToFileA(NULL, downloadpath.c_str(), ReturnInstallStringP().c_str(), 0, NULL);
 			}
 			catch (const std::exception&)
 			{
 				return 3;
 			}
+		}
+//prive personal
+
+		bool CheckIfDicrectoryExists(std::string value) {
+			if (is_directory(value))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+		}
+
+		void ShowBoxP(std::string value) {
+			String^ str2 = gcnew String(value.c_str());
+			System::Windows::Forms::MessageBox().Show(str2);
+		}
+
+		string ReturnInstallStringP() {
+			string idk = installationstring;
+			return idk;
 		}
 
 
