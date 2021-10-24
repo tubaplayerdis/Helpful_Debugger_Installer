@@ -29,7 +29,7 @@
     <ClInclude Include="MainForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FinishedScreen.h">
+    <ClInclude Include="Form2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ISM.h">

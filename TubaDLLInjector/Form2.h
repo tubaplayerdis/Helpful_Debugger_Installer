@@ -1,4 +1,5 @@
 #pragma once
+#include "MainForm.h"
 
 namespace TubaDLLInjector {
 
@@ -39,6 +40,7 @@ namespace TubaDLLInjector {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 
+
 	protected:
 
 	private:
@@ -74,21 +76,22 @@ namespace TubaDLLInjector {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(15, 539);
+			this->button1->Location = System::Drawing::Point(186, 527);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(154, 23);
+			this->button1->Size = System::Drawing::Size(153, 35);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Close";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(185, 539);
+			this->button2->Location = System::Drawing::Point(11, 527);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(154, 23);
+			this->button2->Size = System::Drawing::Size(169, 35);
 			this->button2->TabIndex = 2;
-			this->button2->Text = L"Close and Launch";
+			this->button2->Text = L"Close and launch ";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &EditorForm::button2_Click);
 			// 
 			// EditorForm
 			// 
@@ -107,7 +110,9 @@ namespace TubaDLLInjector {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		
+		this->Close();
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }

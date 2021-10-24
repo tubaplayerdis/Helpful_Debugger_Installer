@@ -92,24 +92,22 @@ int AYO::InstallHelpfuldebugger(std::string downloadpath) {
 		return 1;
 	}
 	try
-	{
-		string t = "ping " + downloadpath;
-		string s = "https://";
-		t.erase(s.length());								
-		system(("ping " + t).c_str());
+	{									
+		system("ping google.com");
+		try
+		{
+			URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), 0, NULL);
+		}
+		catch (const std::exception&)
+		{
+			return 3;
+		}
 	}
 	catch (const std::exception&)
 	{
 		return 2;
 	}
-	try
-	{								
-		URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), 0, NULL);
-	}
-	catch (const std::exception&)
-	{
-		return 3;
-	}
+	
 }
 
 

@@ -131,7 +131,7 @@
     <ClCompile Include="ISM.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FinishedScreen.h">
+    <ClInclude Include="Form2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ISM.h" />
@@ -140,8 +140,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FinishedScreen.resx">
-      <DependentUpon>FinishedScreen.h</DependentUpon>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

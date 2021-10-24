@@ -3,6 +3,7 @@
 #include <string.h>
 #include <iostream>
 #include "ISM.h"
+#include "Form2.h"
 
 
 namespace Helpful_Debugger_Installer {
@@ -170,6 +171,48 @@ namespace Helpful_Debugger_Installer {
 				if (NEED.ReturnInstallString() == "")
 				{
 					NEED.ShowBox("There is no install directory");
+				}
+				else
+				{
+					switch (NEED.CreateorVerifyInstallDic(NEED.ReturnInstallString()))
+					{
+					case 1:
+						NEED.ShowBox("Direcotry already existed, downloading");
+						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip"))
+						{
+						case 0:
+							NEED.ShowBox("Sucsesfully installed Helpful Debugger");
+							
+							break;
+						case 1:
+							NEED.ShowBox("the directory you specified did not exist");
+							break;
+						case 2:
+							NEED.ShowBox("The URL test failed or failed to acces url");
+							break;
+						case 3:
+							NEED.ShowBox("Faield to install Helpful debugger");
+							break;
+						}
+					case 0:
+						NEED.ShowBox("Created New Directory for Helpful_debugger");
+						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip"))
+						{
+						case 0:
+							NEED.ShowBox("Sucsesfully installed Helpful Debugger");
+
+							break;
+						case 1:
+							NEED.ShowBox("the directory you specified did not exist");
+							break;
+						case 2:
+							NEED.ShowBox("The URL test failed or failed to acces url");
+							break;
+						case 3:
+							NEED.ShowBox("Faield to install Helpful debugger");
+							break;
+						}
+					}
 				}
 			}
 									 
