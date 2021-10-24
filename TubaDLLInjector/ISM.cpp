@@ -31,21 +31,22 @@ string AYO::ReturnInstallString() {
 	return idk;
 }
 
-		bool CheckIfDicrectoryExists(string value) {
-			if (is_directory(value))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+bool CheckIfDicrectoryExists(std::string value) {
+	if (is_directory(value))
+	{
+		return true; 
+	}
+	else
+	{
+		return false;
+	}
 			
-		}
+}
 
-		void ShowBox(string value) {
-			//System::Windows::Forms::MessageBox().Show("PEEPEE");
-		}
+void ShowBox(std::string value) {
+	String^ str2 = gcnew String(value.c_str());
+	System::Windows::Forms::MessageBox().Show(str2);
+}
 
 		/*
 		* Return Values
