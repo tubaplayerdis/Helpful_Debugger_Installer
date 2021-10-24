@@ -1,14 +1,16 @@
 #pragma once
 
-#include <string>
 #include <string.h>
+#include <string>
 
 
 
 
 
 public class AYO {
-public: void SetInstallString(std::string vlaue);
+public:
+	void SetInstallString(std::string vlaue);
+	std::string ReturnInstallString();
 };
 
 

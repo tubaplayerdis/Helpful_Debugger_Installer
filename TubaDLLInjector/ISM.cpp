@@ -15,24 +15,21 @@ using namespace std;
 using namespace std::filesystem;
 
 
-namespace ISM_namespace {	
-	public class PISS
-	{
-	public:
-		string installationstring;
+
+string installationstring;
 
 		
-
-		void SetInstallString(std::string value) {
-			installationstring = value;
-			ShowBox("yeet");
+		
+void AYO::SetInstallString(std::string value) {
+	installationstring = value;
+	
 			
-		}
+}
 
-		string ReturnInstallString() {
-			string idk = installationstring;
-			return idk;
-		}
+string AYO::ReturnInstallString() {
+	string idk = installationstring;
+	return idk;
+}
 
 		bool CheckIfDicrectoryExists(string value) {
 			if (is_directory(value))
@@ -47,12 +44,7 @@ namespace ISM_namespace {
 		}
 
 		void ShowBox(string value) {
-			int msgboxshow = MessageBox(
-				NULL,
-				L"Direcotry you tried to installed to did not exist",
-				L"Test",
-				MB_ICONEXCLAMATION | MB_OK
-			);
+			//System::Windows::Forms::MessageBox().Show("PEEPEE");
 		}
 
 		/*
@@ -81,7 +73,7 @@ namespace ISM_namespace {
 		* 3 = could not install file
 		*/
 		int InstallHelpfuldebugger(std::string downloadpath) {
-			if (!CheckIfDicrectoryExists(ReturnInstallString())) {
+			if (!CheckIfDicrectoryExists(installationstring)) {
 				ShowBox("The Directory you specified did not exist");
 				return 1;
 			}
@@ -98,7 +90,7 @@ namespace ISM_namespace {
 			}
 			try
 			{								
-				URLDownloadToFileA(NULL, downloadpath.c_str(), ReturnInstallString().c_str(), 0, NULL);
+				URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), 0, NULL);
 			}
 			catch (const std::exception&)
 			{
@@ -113,9 +105,4 @@ namespace ISM_namespace {
 
 
 
-	private:
-
-	};
-
-
-}
+	

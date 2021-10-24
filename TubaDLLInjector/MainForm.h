@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <string.h>
+#include <iostream>
 #include "ISM.h"
 
 
@@ -140,6 +141,7 @@ namespace Helpful_Debugger_Installer {
 			this->ChooseButton->TabIndex = 4;
 			this->ChooseButton->Text = L"Choose";
 			this->ChooseButton->UseVisualStyleBackColor = false;
+			this->ChooseButton->Click += gcnew System::EventHandler(this, &MyForm::ChooseButton_Click);
 			// 
 			// MyForm
 			// 
@@ -163,10 +165,34 @@ namespace Helpful_Debugger_Installer {
 				
 			System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 				
-				
-				
+				AYO lol;
+				lol.SetInstallString("PEEPEE");
+				String^ str2 = gcnew String(lol.ReturnInstallString().c_str());
+				textBox1->Text = str2;
 			}
-			
-			
-	};
+									 
+
+			void MarshalString(String^ s, std::string& os) {
+				using namespace Runtime::InteropServices;
+				const char* chars =
+					(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+				os = chars;
+				Marshal::FreeHGlobal(IntPtr((void*)chars));
+			}
+				
+			System::Void ChooseButton_Click(System::Object^ sender, System::EventArgs^ e) {
+				
+				if (ChooseInstallDirectory->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+				{
+					AYO lel;
+					std::string idk = "";
+					String^ o = ChooseInstallDirectory->SelectedPath;
+					MarshalString(o, idk);
+					lel.SetInstallString(idk);
+					String^ str2 = gcnew String(lel.ReturnInstallString().c_str());
+					textBox1->Text = str2;
+				}
+
+			}
+};
 }
