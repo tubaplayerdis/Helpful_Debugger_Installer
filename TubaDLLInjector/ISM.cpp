@@ -96,7 +96,7 @@ int AYO::InstallHelpfuldebugger(std::string downloadpath) {
 		system("ping google.com");
 		try
 		{
-			URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), 0, NULL);
+			URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), BINDF_GETNEWESTVERSION, NULL);
 		}
 		catch (const std::exception&)
 		{

@@ -194,6 +194,7 @@ namespace Helpful_Debugger_Installer {
 							NEED.ShowBox("Faield to install Helpful debugger");
 							break;
 						}
+						break;
 					case 0:
 						NEED.ShowBox("Created New Directory for Helpful_debugger");
 						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip"))
@@ -212,6 +213,7 @@ namespace Helpful_Debugger_Installer {
 							NEED.ShowBox("Faield to install Helpful debugger");
 							break;
 						}
+						break;
 					}
 				}
 			}
