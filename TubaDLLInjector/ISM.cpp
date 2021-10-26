@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <tchar.h>
 #include <Urlmon.h>
+#include <fstream>
 #include "ISM.h"
 #pragma comment(lib, "urlmon.lib")
 
@@ -84,7 +85,7 @@ int AYO::CreateorVerifyInstallDic(std::string direcotry) {
 * 1 = directory did not exist
 * 2 = URL does not exist
 * 2 = failed to acces url
-* 3 = could not install file
+* 3 = error with file
 */
 int AYO::InstallHelpfuldebugger(std::string downloadpath) {
 	if (!CheckIfDicrectoryExistsP(installationstring)) {
@@ -96,7 +97,18 @@ int AYO::InstallHelpfuldebugger(std::string downloadpath) {
 		system("ping google.com");
 		try
 		{
-			URLDownloadToFileA(NULL, downloadpath.c_str(), installationstring.c_str(), BINDF_GETNEWESTVERSION, NULL);
+			string t = installationstring;
+			t =+ "\\";
+			HRESULT hr;
+			hr = URLDownloadToFileA(NULL, downloadpath.c_str(), t.c_str(), BINDF_GETNEWESTVERSION, NULL);
+			switch (hr)
+			{
+				case S_OK:
+					return 1;
+					break;
+				case E_OUTOFMEMORY:
+					IGIVEUP("Out of memory");
+			}
 		}
 		catch (const std::exception&)
 		{

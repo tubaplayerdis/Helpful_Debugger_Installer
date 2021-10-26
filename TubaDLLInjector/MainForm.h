@@ -210,7 +210,7 @@ namespace Helpful_Debugger_Installer {
 							NEED.ShowBox("The URL test failed or failed to acces url");
 							break;
 						case 3:
-							NEED.ShowBox("Faield to install Helpful debugger");
+							NEED.ShowBox("Faield to install Helpful debugger: error with file");
 							break;
 						}
 						break;
