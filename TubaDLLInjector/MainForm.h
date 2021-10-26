@@ -72,7 +72,7 @@ namespace Helpful_Debugger_Installer {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -163,8 +163,18 @@ namespace Helpful_Debugger_Installer {
 
 		}
 #pragma endregion
-			
-			private:  
+
+			private:
+
+				bool YesNoBoxShow() {
+					if (MessageBox::Show("This will cause the application to run a ping test then download with command promt, continue?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::Yes) {
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
 				
 			System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 				AYO NEED;
@@ -174,47 +184,55 @@ namespace Helpful_Debugger_Installer {
 				}
 				else
 				{
-					switch (NEED.CreateorVerifyInstallDic(NEED.ReturnInstallString()))
+					if (YesNoBoxShow())
 					{
-					case 1:
-						NEED.ShowBox("Direcotry already existed, downloading");
-						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
+						switch (NEED.CreateorVerifyInstallDic(NEED.ReturnInstallString()))
 						{
-						case 0:
-							NEED.ShowBox("Sucsesfully installed Helpful Debugger");
-							
-							break;
 						case 1:
-							NEED.ShowBox("the directory you specified did not exist");
-							break;
-						case 2:
-							NEED.ShowBox("The URL test failed or failed to acces url");
-							break;
-						case 3:
-							NEED.ShowBox("Faield to install Helpful debugger");
-							break;
-						}
-						break;
-					case 0:
-						NEED.ShowBox("Created New Directory for Helpful_debugger");
-						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
-						{
-						case 0:
-							NEED.ShowBox("Sucsesfully installed Helpful Debugger");
+							NEED.ShowBox("Directory already existed, downloading");
+							switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
+							{
+							case 0:
+								NEED.ShowBox("Sucsesfully installed Helpful Debugger");
 
+								break;
+							case 1:
+								NEED.ShowBox("the directory you specified did not exist");
+								break;
+							case 2:
+								NEED.ShowBox("The URL test failed or failed to acces url");
+								break;
+							case 3:
+								NEED.ShowBox("Faield to install Helpful debugger");
+								break;
+							}
 							break;
-						case 1:
-							NEED.ShowBox("the directory you specified did not exist");
-							break;
-						case 2:
-							NEED.ShowBox("The URL test failed or failed to acces url");
-							break;
-						case 3:
-							NEED.ShowBox("Faield to install Helpful debugger: error with file");
+						case 0:
+							NEED.ShowBox("Created New Directory for Helpful_debugger");
+							switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
+							{
+							case 0:
+								NEED.ShowBox("Sucsesfully installed Helpful Debugger");
+
+								break;
+							case 1:
+								NEED.ShowBox("the directory you specified did not exist");
+								break;
+							case 2:
+								NEED.ShowBox("The URL test failed or failed to acces url");
+								break;
+							case 3:
+								NEED.ShowBox("Faield to install Helpful debugger: error with file");
+								break;
+							}
 							break;
 						}
-						break;
 					}
+					else
+					{
+						NEED.ShowBox("Canceled");
+					}
+					
 				}
 			}
 									 
@@ -238,7 +256,7 @@ namespace Helpful_Debugger_Installer {
 					lel.SetInstallString(idk);
 					String^ str2 = gcnew String(lel.ReturnInstallString().c_str());
 					textBox1->Text = str2;
-					lel.ShowBox(lel.ReturnInstallString());
+					//lel.ShowBox(lel.ReturnInstallString());
 				}
 
 			}

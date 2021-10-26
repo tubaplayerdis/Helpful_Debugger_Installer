@@ -13,7 +13,7 @@ public:
 
 	std::string ReturnInstallString();
 
-	void ShowBox(std::string value);
+	void ShowBox(std::string mainmessage, std::string caption, int buttons, int picture);
 
 	/*
 	* Return Values

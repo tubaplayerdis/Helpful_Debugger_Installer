@@ -21,21 +21,29 @@ string installationstring;
 
 //prive personal
 
-bool CheckIfDicrectoryExistsP(std::string value) {
-	if (is_directory(value))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-
-}
-
 void IGIVEUP(std::string value) {
 	String^ str2 = gcnew String(value.c_str());
 	System::Windows::Forms::MessageBox::Show(str2);
+}
+
+bool CheckIfDicrectoryExistsP(std::string value) {
+	try
+	{
+		if (is_directory(value))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	catch (const std::exception&)
+	{
+		IGIVEUP("Acces was denied to folder, restart with admin");		
+	}
+	
+
 }
 
 string ReturnInstallStringP() {
@@ -54,10 +62,34 @@ string AYO::ReturnInstallString() {
 }
 
 
+/*
+* int values for button
+* 0 = OK
+* 1 = OKCancel
+* 2 AbortRetryIgnore
+* 3 = YesNoCancel
+* 4 = YesNo
+* 5 = RetryCancel
+* int values for picture
+* 0 = None
+* 1 = Hand
+* 2 = Question
+* 3 = Exclamation
+* 4 = Asterisk
+* 5 = Stop
+* 6 = Error
+* 7 = Warning
+* 8 = Information
+*/
+void AYO::ShowBox(std::string mainmessage, std::string caption, int buttons, int picture) {
+	String^ str2 = gcnew String(mainmessage.c_str());
+	String^ str3 = gcnew String(caption.c_str());
+	switch (buttons)
+	{
+	case 0:
 
-void AYO::ShowBox(std::string value) {
-	String^ str2 = gcnew String(value.c_str());
-	System::Windows::Forms::MessageBox::Show(str2);
+	}
+	System::Windows::Forms::MessageBox::Show(str2, str3);
 }
 
 /*
@@ -66,15 +98,23 @@ void AYO::ShowBox(std::string value) {
 * 1 = direcotry aleady existed
 */
 int AYO::CreateorVerifyInstallDic(std::string direcotry) {
-	if (!CheckIfDicrectoryExistsP(direcotry))
+	try
 	{
-		filesystem::create_directory(direcotry);
-		return 0;
+		if (!CheckIfDicrectoryExistsP(direcotry))
+		{
+			filesystem::create_directory(direcotry);
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
-	else
+	catch (const std::exception&)
 	{
-		return 1;
+		IGIVEUP("Acces was denied to folder, no folder was created even if it says after, run with admin");
 	}
+	
 }
 
 /*
