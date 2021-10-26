@@ -178,7 +178,7 @@ namespace Helpful_Debugger_Installer {
 					{
 					case 1:
 						NEED.ShowBox("Direcotry already existed, downloading");
-						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip"))
+						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
 						{
 						case 0:
 							NEED.ShowBox("Sucsesfully installed Helpful Debugger");
@@ -197,7 +197,7 @@ namespace Helpful_Debugger_Installer {
 						break;
 					case 0:
 						NEED.ShowBox("Created New Directory for Helpful_debugger");
-						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip"))
+						switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
 						{
 						case 0:
 							NEED.ShowBox("Sucsesfully installed Helpful Debugger");

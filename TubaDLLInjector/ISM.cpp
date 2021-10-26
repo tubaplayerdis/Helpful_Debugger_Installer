@@ -87,7 +87,7 @@ int AYO::CreateorVerifyInstallDic(std::string direcotry) {
 * 2 = failed to acces url
 * 3 = error with file
 */
-int AYO::InstallHelpfuldebugger(std::string downloadpath) {
+int AYO::InstallHelpfuldebugger(std::string BashCurlURL) {
 	if (!CheckIfDicrectoryExistsP(installationstring)) {
 		IGIVEUP("The Directory you specified did not exist");
 		return 1;
@@ -97,18 +97,20 @@ int AYO::InstallHelpfuldebugger(std::string downloadpath) {
 		system("ping google.com");
 		try
 		{
-			string t = installationstring;
-			t =+ "\\";
-			HRESULT hr;
-			hr = URLDownloadToFileA(NULL, downloadpath.c_str(), t.c_str(), BINDF_GETNEWESTVERSION, NULL);
-			switch (hr)
-			{
-				case S_OK:
-					return 1;
-					break;
-				case E_OUTOFMEMORY:
-					IGIVEUP("Out of memory");
-			}
+			string s = "cd ";
+			s += installationstring;
+			IGIVEUP(installationstring);
+			s += " && ";
+			string t = "curl ";
+			t += BashCurlURL;
+			s += t;
+			IGIVEUP(s);
+			system(s.c_str());
+			Sleep(500);
+			
+			
+			Sleep(500);
+			return 0;
 		}
 		catch (const std::exception&)
 		{
