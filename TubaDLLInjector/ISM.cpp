@@ -45,9 +45,7 @@ string ReturnInstallStringP() {
 		
 		
 void AYO::SetInstallString(std::string value) {
-	installationstring = value;
-	
-			
+	installationstring = value;			
 }
 
 string AYO::ReturnInstallString() {
@@ -99,12 +97,12 @@ int AYO::InstallHelpfuldebugger(std::string BashCurlURL) {
 		{
 			string s = "cd ";
 			s += installationstring;
-			IGIVEUP(installationstring);
+			//IGIVEUP(installationstring);
 			s += " && ";
 			string t = "curl ";
 			t += BashCurlURL;
 			s += t;
-			IGIVEUP(s);
+			//IGIVEUP(s);
 			system(s.c_str());
 			Sleep(500);
 			
