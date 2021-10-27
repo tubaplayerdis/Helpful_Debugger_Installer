@@ -13,7 +13,7 @@ public:
 
 	std::string ReturnInstallString();
 
-	void ShowBox(std::string mainmessage, std::string caption, int buttons, int picture);
+	void ShowBox(std::string mainmessage, std::string caption);
 
 	/*
 	* Return Values
@@ -30,7 +30,7 @@ public:
 	* 2 = failed to acces url
 	* 3 = could not install file
 	*/
-	int InstallHelpfuldebugger(std::string downloadpath);
+	int InstallHelpfuldebugger(std::string BashCurlURL, std::string Filename);
 };
 
 

@@ -180,7 +180,7 @@ namespace Helpful_Debugger_Installer {
 				AYO NEED;
 				if (NEED.ReturnInstallString() == "")
 				{
-					NEED.ShowBox("There is no install directory");
+					NEED.ShowBox("There is no install directory set, please set", "Warning");
 				}
 				else
 				{
@@ -189,40 +189,40 @@ namespace Helpful_Debugger_Installer {
 						switch (NEED.CreateorVerifyInstallDic(NEED.ReturnInstallString()))
 						{
 						case 1:
-							NEED.ShowBox("Directory already existed, downloading");
-							switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
+							NEED.ShowBox("Directory already existed, downloading", "Downloader");
+							switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip", "Helpful.Debugger.Release.v1.0.zip"))
 							{
 							case 0:
-								NEED.ShowBox("Sucsesfully installed Helpful Debugger");
+								NEED.ShowBox("Sucsesfully installed Helpful Debugger", "Installer");
 
 								break;
 							case 1:
-								NEED.ShowBox("the directory you specified did not exist");
+								NEED.ShowBox("the directory you specified did not exist", "Error");
 								break;
 							case 2:
-								NEED.ShowBox("The URL test failed or failed to acces url");
+								NEED.ShowBox("The URL test failed or failed to acces url", "Error");
 								break;
 							case 3:
-								NEED.ShowBox("Faield to install Helpful debugger");
+								NEED.ShowBox("Failed to install Helpful debugger", "Error");
 								break;
 							}
 							break;
 						case 0:
-							NEED.ShowBox("Created New Directory for Helpful_debugger");
-							switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip"))
+							NEED.ShowBox("Created New Directory for Helpful_debugger", "Information");
+							switch (NEED.InstallHelpfuldebugger("https://github.com/tubaplayerdis/HelpfulDebugger/releases/download/v1.0/Helpful.Debugger.Release.v1.0.zip -O Helpful.Debugger.Release.v1.0.zip", "Helpful.Debugger.Release.v1.0.zip"))
 							{
 							case 0:
-								NEED.ShowBox("Sucsesfully installed Helpful Debugger");
+								NEED.ShowBox("Sucsesfully installed Helpful Debugger", "Installer");
 
 								break;
 							case 1:
-								NEED.ShowBox("the directory you specified did not exist");
+								NEED.ShowBox("the directory you specified did not exist", "Error");
 								break;
 							case 2:
-								NEED.ShowBox("The URL test failed or failed to acces url");
+								NEED.ShowBox("The URL test failed or failed to acces url", "Error");
 								break;
 							case 3:
-								NEED.ShowBox("Faield to install Helpful debugger: error with file");
+								NEED.ShowBox("Faield to install Helpful debugger: error with file", "Error");
 								break;
 							}
 							break;
@@ -230,7 +230,7 @@ namespace Helpful_Debugger_Installer {
 					}
 					else
 					{
-						NEED.ShowBox("Canceled");
+						NEED.ShowBox("Canceled", "Confirmation");
 					}
 					
 				}
