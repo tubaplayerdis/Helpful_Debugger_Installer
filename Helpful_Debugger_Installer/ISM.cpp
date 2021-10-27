@@ -149,7 +149,11 @@ int AYO::InstallHelpfuldebugger(std::string BashCurlURL, std::string Filename) {
 				//IGIVEUP(s);
 				IGIVEUP(s.c_str());
 				system(s.c_str());
-				Sleep(500);
+				Sleep(100);
+				string h = "explorer -Path ";
+				h += installationstring;
+				h += "Helpful.Debugger.Release.v1.0";
+				system(h.c_str());
 
 
 				Sleep(500);
