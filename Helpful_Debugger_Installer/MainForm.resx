@@ -117,7 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ChooseInstallDirectory.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ChooseInstallDirectory.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
+  </data>
+  <data name="NEEDTHIS" xml:space="preserve">
+    <value>Helpful Deubugger 
+
+Features:
+
+- Teminate/Execute programs
+- List currently running processes
+- AutoClicker
+- Mouse position debug
+- Request system information
+- Request Hardware information
+
+Coming soon:
+
+- Password creator
+- Run JS files with node from helpful debugger
+- Run TS files from helpful debugger
+- Official download page/website
+- More elaborate errors</value>
+  </data>
 </root>

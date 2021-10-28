@@ -59,6 +59,10 @@ namespace Helpful_Debugger_Installer {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Button^ ChooseButton;
+	private: System::Windows::Forms::TextBox^ textBox2;
+
+
+
 	protected:
 
 	protected:
@@ -81,12 +85,14 @@ namespace Helpful_Debugger_Installer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->ChooseInstallDirectory = (gcnew System::Windows::Forms::FolderBrowserDialog());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->ChooseButton = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -106,7 +112,7 @@ namespace Helpful_Debugger_Installer {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft JhengHei", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(12, 9);
+			this->label1->Location = System::Drawing::Point(3, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(323, 34);
 			this->label1->TabIndex = 1;
@@ -114,10 +120,10 @@ namespace Helpful_Debugger_Installer {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(18, 89);
+			this->textBox1->Location = System::Drawing::Point(9, 89);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(314, 20);
+			this->textBox1->Size = System::Drawing::Size(327, 20);
 			this->textBox1->TabIndex = 2;
 			this->textBox1->Text = L"C:\\Program Files\\Helpful_Debugger";
 			// 
@@ -126,7 +132,7 @@ namespace Helpful_Debugger_Installer {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft JhengHei", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(14, 62);
+			this->label2->Location = System::Drawing::Point(5, 62);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(265, 24);
 			this->label2->TabIndex = 3;
@@ -137,26 +143,37 @@ namespace Helpful_Debugger_Installer {
 			this->ChooseButton->BackColor = System::Drawing::SystemColors::Control;
 			this->ChooseButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ChooseButton->Location = System::Drawing::Point(18, 115);
+			this->ChooseButton->Location = System::Drawing::Point(9, 115);
 			this->ChooseButton->Name = L"ChooseButton";
-			this->ChooseButton->Size = System::Drawing::Size(314, 32);
+			this->ChooseButton->Size = System::Drawing::Size(327, 32);
 			this->ChooseButton->TabIndex = 4;
 			this->ChooseButton->Text = L"Choose";
 			this->ChooseButton->UseVisualStyleBackColor = false;
 			this->ChooseButton->Click += gcnew System::EventHandler(this, &MyForm::ChooseButton_Click);
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(9, 153);
+			this->textBox2->Multiline = true;
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->ReadOnly = true;
+			this->textBox2->Size = System::Drawing::Size(327, 366);
+			this->textBox2->TabIndex = 5;
+			this->textBox2->Text = "Loading";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(351, 574);
+			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->ChooseButton);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm";
-			this->Text = L"HDI - Main";
+			this->Text = L"HD Installer";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -194,7 +211,7 @@ namespace Helpful_Debugger_Installer {
 							{
 							case 0:
 								NEED.ShowBox("Sucsesfully installed Helpful Debugger", "Installer");
-
+								//NEED.OpenForm2();
 								break;
 							case 1:
 								NEED.ShowBox("the directory you specified did not exist", "Error");
@@ -213,7 +230,7 @@ namespace Helpful_Debugger_Installer {
 							{
 							case 0:
 								NEED.ShowBox("Sucsesfully installed Helpful Debugger", "Installer");
-
+								//NEED.OpenForm2();
 								break;
 							case 1:
 								NEED.ShowBox("the directory you specified did not exist", "Error");
@@ -262,7 +279,8 @@ namespace Helpful_Debugger_Installer {
 			}
 			System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 				AYO p;				
-				p.SetInstallString("C:\\Program Files\\Helpful_Debugger");
+				p.SetInstallString("C:\\Program Files\\Helpful_Debugger");	
+				textBox2->Text = "Helpful debugger\r\r\n\nTo install press the install button, if it says installed and does not install by not opening the install folder it did not install and you should restart the program with admin to contine\r\r\n\nMake sure to press info button on starting Helpful Debugger for the first time!";
 			}
 	};
 }

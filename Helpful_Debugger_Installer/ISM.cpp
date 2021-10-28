@@ -9,6 +9,7 @@
 #include <Urlmon.h>
 #include <fstream>
 #include "ISM.h"
+#include "Form2.h"
 #pragma comment(lib, "urlmon.lib")
 
 using namespace System;
@@ -87,6 +88,11 @@ void AYO::ShowBox(std::string mainmessage, std::string caption) {
 	System::Windows::Forms::MessageBox::Show(str2, str3, System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
 }
 
+void AYO::OpenForm2() {
+	System::Windows::Forms::Form^ o = gcnew System::Windows::Forms::Form;
+	o->Show();
+}
+
 /*
 * Return Values
 * 0 = created directory
@@ -125,59 +131,64 @@ int AYO::InstallHelpfuldebugger(std::string BashCurlURL, std::string Filename) {
 		IGIVEUP("The Directory you specified did not exist");
 		return 1;
 	}
-	try
-	{		
-		
+	else 
+	{
 		try
 		{
-			system("ping github.com");
+
 			try
 			{
-				string s = "cd ";
-				s += installationstring;
-				s += " & "; // cd string && 
-				string f = "powershell -ExecutionPolicy Bypass -Command \"Expand-Archive ";
-				f += Filename;
-				//IGIVEUP(installationstring);
+				system("ping github.com");
+				try
+				{
+					string s = "cd ";
+					s += installationstring;
+					s += " & "; // cd string && 
+					string f = "powershell -ExecutionPolicy Bypass -Command \"Expand-Archive ";
+					f += Filename;
+					//IGIVEUP(installationstring);
 
-				string t = "curl -LO ";
-				t += BashCurlURL;
-				f += "\"";
-				s += t; // cd string && curl string
-				s += " & ";
-				s += f; // finished string								
-				//IGIVEUP(s);
-				IGIVEUP(s.c_str());
-				system(s.c_str());
-				Sleep(100);
-				string h = "explorer -Path ";
-				h += installationstring;
-				h += "Helpful.Debugger.Release.v1.0";
-				// change
-				system(h.c_str());
+					string t = "curl -LO ";
+					t += BashCurlURL;
+					f += "\"";
+					s += t; // cd string && curl string
+					s += " & ";
+					s += f; // finished string								
+					//IGIVEUP(s);
+					//IGIVEUP(s.c_str());
+					system(s.c_str());
+					Sleep(100);
+					string h = "start ";
+					h += ReturnInstallStringP();
+					h += "\\Helpful.Debugger.Release.v1.0";
+					//IGIVEUP(h.c_str());
+					// change
+					system(h.c_str());
 
 
-				Sleep(500);
-				return 0;
+					Sleep(500);
+					return 0;
+				}
+				catch (const std::exception&)
+				{
+					return 3;
+				}
 			}
 			catch (const std::exception&)
 			{
-				return 3;
+				return 2;
 			}
+
+
+
+
 		}
 		catch (const std::exception&)
 		{
 			return 2;
 		}
-			
-		
-		
-		
 	}
-	catch (const std::exception&)
-	{
-		return 2;
-	}
+	
 	
 }
 

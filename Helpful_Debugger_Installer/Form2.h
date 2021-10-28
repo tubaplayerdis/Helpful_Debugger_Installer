@@ -1,5 +1,6 @@
 #pragma once
 #include "MainForm.h"
+#include "ISM.h"
 
 namespace TubaDLLInjector {
 

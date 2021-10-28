@@ -12,7 +12,7 @@ public:
 	void SetInstallString(std::string vlaue);
 
 	std::string ReturnInstallString();
-
+	void OpenForm2();
 	void ShowBox(std::string mainmessage, std::string caption);
 
 	/*
