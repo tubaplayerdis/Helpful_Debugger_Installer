@@ -2,3 +2,4 @@
 Installer for Helpful Debugger
 
 Downloads helpful deubgger
+Windows only
